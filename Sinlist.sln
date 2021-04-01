@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinlist.Api", "Sinlist.Api\Sinlist.Api.csproj", "{730217E9-5E6A-42C2-8204-9E6512FCC829}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{730217E9-5E6A-42C2-8204-9E6512FCC829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730217E9-5E6A-42C2-8204-9E6512FCC829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730217E9-5E6A-42C2-8204-9E6512FCC829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730217E9-5E6A-42C2-8204-9E6512FCC829}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {266CED95-7E8F-4E6A-B413-80AEF892659B}
+	EndGlobalSection
+EndGlobal

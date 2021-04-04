@@ -6,6 +6,7 @@ namespace Sinlist.Core.Entities.Lists
     [Table("ListItem")]
     public class ListItem
     {
+        public virtual int Id { get; set; }
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual int Count { get; set; }

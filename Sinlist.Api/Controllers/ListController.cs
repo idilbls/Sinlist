@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Sinlist.Api.Controllers
 {
     [Route("api/list")]
-    public class ListController : Controller
+    public class ListController : ControllerBase
     {
         public readonly IListService _serviceList;
         public ListController(IListService serviceList)

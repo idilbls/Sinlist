@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sinlist.Core.Entities.Lists;
 
-namespace Sinlist.EntityFrameworkCore.EntityFrameworkCore
+namespace Sinlist.Core.Context
 {
     public class SinlistDbContext : DbContext
     {
         public SinlistDbContext(DbContextOptions<SinlistDbContext> options) : base(options)
         {
+
         }
-        public virtual DbSet<List> Lists { get; set; }
-        public virtual DbSet<ListItem> ListItems { get; set; }
+        public DbSet<List> Lists { get; set; }
+        public DbSet<ListItem> ListItems { get; set; }
     }
 }

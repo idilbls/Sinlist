@@ -3,9 +3,10 @@ using Sinlist.Core.Context;
 using Sinlist.Shared.Lists;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sinlist.Business.Lists
+namespace Sinlist.Api.Services.Lists
 {
     public class ListService : IListService
     {

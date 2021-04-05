@@ -8,8 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Sinlist.Business.Lists;
-using Sinlist.EntityFrameworkCore.EntityFrameworkCore;
+using Sinlist.Api.Services.Lists;
+using Sinlist.Core.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,8 @@ namespace Sinlist.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SinlistDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddAutoMapper(typeof(Startup));
+            services.AddDbContext<SinlistDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddTransient<IListService, ListService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>

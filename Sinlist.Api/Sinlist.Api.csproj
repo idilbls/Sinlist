@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4">
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -13,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sinlist.Business\Sinlist.Business.csproj" />
-    <ProjectReference Include="..\Sinlist.EntityFrameworkCore\Sinlist.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Sinlist.Core\Sinlist.Core.csproj" />
     <ProjectReference Include="..\Sinlist.Shared\Sinlist.Shared.csproj" />
+    <ProjectReference Include="..\Sinlist.Tower\Sinlist.Tower.csproj" />
   </ItemGroup>
 
 </Project>

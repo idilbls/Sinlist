@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sinlist.EntityFrameworkCore.EntityFrameworkCore;
 
 namespace Sinlist.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(SinlistDbContext))]
-    partial class SinlistDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210405062942_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

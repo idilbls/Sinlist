@@ -11,11 +11,11 @@ namespace Sinlist.EntityFrameworkCore.Migrations
                 name: "List",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    IsActive = table.Column<bool>(nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,14 +26,14 @@ namespace Sinlist.EntityFrameworkCore.Migrations
                 name: "ListItem",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Count = table.Column<int>(nullable: false),
-                    IsActive = table.Column<bool>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    ListId = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Count = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ListId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

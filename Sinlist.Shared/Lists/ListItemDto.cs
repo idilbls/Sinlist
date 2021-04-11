@@ -6,6 +6,7 @@ namespace Sinlist.Shared.Lists
 {
     public class ListItemDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Count { get; set; }

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Sinlist.Api.Controllers
 {
     [Route("api/list")]
+    [ApiController]
     public class ListController : ControllerBase
     {
         public readonly IListService _serviceList;
@@ -21,20 +22,12 @@ namespace Sinlist.Api.Controllers
 
 
 
-        [HttpPost("get_all_list")]
-        public async Task<IList<ListDto>> GetAllList()
+        [HttpPost("add_list")]
+        public async Task<ListDto> AddListAsync([FromBody] ListDto listDto)
         {
-            var result = await this._serviceList.GetAllListAsync();
+            var result = await _serviceList.AddListAsync(listDto);
             return result;
         }
 
-
-
-        [HttpPost("get_all_items")]
-        public async Task<IList<ListItemDto>> GetAllListItem()
-        {
-            var result = await this._serviceList.GetAllListItemAsync();
-            return result;
-        }
     }
 }

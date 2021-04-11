@@ -31,7 +31,7 @@ namespace Sinlist.Api
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<SinlistDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddTransient<IListService, ListService>();
+            services.AddScoped<IListService, ListService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

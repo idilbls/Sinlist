@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Sinlist.Core.Context;
+using Sinlist.Core.Entities.Lists;
 using Sinlist.Shared.Lists;
 using System;
 using System.Collections.Generic;
@@ -21,68 +22,17 @@ namespace Sinlist.Api.Services.Lists
             _mapper = mapper;
         }
 
-        public async Task AddAsync(ListDto listDto)
+        public async Task<ListDto> AddListAsync(ListDto listDto)
         {
-            await _context.AddAsync(listDto);
+
+            listDto.CreationTime = DateTime.Now;
+
+            var map = _mapper.Map<List>(listDto);
+            await  _context.Lists.AddAsync(map);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<ListDto>(map);
         }
 
-        public async Task AddAsync(ListItemDto listItemDto)
-        {
-            await _context.AddAsync(listItemDto);
-        }
-
-        public async Task AddRangeAsync(IEnumerable<ListDto> listDtos)
-        {
-            await _context.AddRangeAsync(listDtos);
-        }
-
-        public async Task AddRangeAsync(IEnumerable<ListItemDto> listItemDtos)
-        {
-            await _context.AddRangeAsync(listItemDtos);
-        }
-
-        public Task<IList<ListDto>> GetAllListAsync(int listId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<ListItemDto>> GetAllListItemAsync(int listItemId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(ListDto listDto)
-        {
-            _context.Remove(listDto);
-        }
-
-        public void Remove(ListItemDto listItemDto)
-        {
-            _context.Remove(listItemDto);
-        }
-
-        public void RemoveRange(IEnumerable<ListDto> listDtos)
-        {
-            _context.RemoveRange(listDtos);
-        }
-
-        public void RemoveRange(IEnumerable<ListItemDto> listItemDtos)
-        {
-            _context.RemoveRange(listItemDtos);
-        }
-
-        public ListDto Update(ListDto listDto)
-        {
-            _context.Entry(listDto).State = EntityState.Modified;
-
-            return listDto;
-        }
-
-        public ListItemDto Update(ListItemDto listItemDto)
-        {
-            _context.Entry(listItemDto).State = EntityState.Modified;
-
-            return listItemDto;
-        }
     }
 }

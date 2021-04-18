@@ -34,5 +34,74 @@ namespace Sinlist.Api.Services.Lists
             return _mapper.Map<ListDto>(map);
         }
 
+        public async Task<ListItemDto> AddListItemAsync(ListItemDto listItemDto)
+        {
+            //ListItem listItem = _mapper.Map<ListItemDto, ListItem>(listItemDto);
+            //listItem.CreationTime = DateTime.Now;
+            //var addedListItem = await _context.ListItems.AddAsync(listItem);
+            //await _context.SaveChangesAsync();
+            //return _mapper.Map<ListItem, ListItemDto>(addedListItem.Entity);
+
+            listItemDto.CreationTime = DateTime.Now;
+            var map = _mapper.Map<ListItem>(listItemDto);
+            await _context.ListItems.AddAsync(map);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<ListItemDto>(map);
+        }
+
+        public async Task DeleteListItem(int ItemId)
+        {
+            var listItem = await _context.ListItems.FirstOrDefaultAsync(x => x.Id == ItemId);
+            _context.ListItems.Remove(listItem);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteListWithItem(int listId)
+        {
+            //var list = await _context.Lists.FirstOrDefaultAsync(x => x.Id == listId);
+            //_context.Lists.Remove(list);
+            //var lisItems = await _context.ListItems.AllAsync(x => x.ListId == listId);
+            var list = await _context.Lists.FindAsync(listId);
+            if(list != null)
+            {
+                var listItems = await _context.ListItems.Where(x => x.ListId == listId).ToListAsync();
+
+                _context.ListItems.RemoveRange(listItems);
+                _context.Lists.Remove(list);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<IList<ListItemDto>> GetListWithItemsAsync(int listId)
+        {
+            var list = await _context.Lists.FindAsync(listId);
+            var listItems = await _context.ListItems.Where(x => x.ListId == listId).ToListAsync();
+            return _mapper.Map<List<ListItemDto>>(listItems);
+            
+        }
+
+        public async Task<ListDto> UpdateList(ListDto list)
+        {
+            var listDto = await _context.Lists.FirstOrDefaultAsync(x => x.Id == list.Id);
+            listDto.Name = list.Name;
+            listDto.CreationTime = DateTime.Now;
+            _context.Lists.Update(listDto);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ListDto>(listDto);
+
+        }
+
+        public async Task<ListItemDto> UpdateListItem(ListItemDto listItem)
+        {
+            var listItemDto = await _context.ListItems.FirstOrDefaultAsync(x => x.Id == listItem.Id);
+            listItemDto.Name = listItem.Name;
+            listItemDto.Description = listItem.Description;
+            listItemDto.Count = listItem.Count;
+            listItemDto.CreationTime = DateTime.Now;
+            _context.ListItems.Update(listItemDto);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ListItemDto>(listItemDto);
+        }
     }
 }

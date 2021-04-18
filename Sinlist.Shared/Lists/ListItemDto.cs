@@ -13,6 +13,5 @@ namespace Sinlist.Shared.Lists
         public bool IsActive { get; set; }
         public DateTime CreationTime { get; set; }
         public int ListId { get; set; }
-        public ListDto List { get; set; }
     }
 }

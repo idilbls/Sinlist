@@ -12,9 +12,9 @@ namespace Sinlist.Api.Services.Lists
         public Task<ListDto> AddListAsync(ListDto listDto);
         public Task<IList<ListItemDto>> GetListWithItemsAsync(int listId);
         public Task<ListDto> UpdateList(ListDto list);
-        public Task DeleteListWithItem(int listId);
+        public Task<bool> DeleteListWithItem(int listId);
         public Task<ListItemDto> AddListItemAsync(ListItemDto listItemDto);
         public Task<ListItemDto> UpdateListItem(ListItemDto listItem);
-        public Task DeleteListItem(int ItemId);
+        public Task<bool> DeleteListItem(int ItemId);
     }
 }

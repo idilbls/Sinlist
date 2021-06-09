@@ -50,27 +50,44 @@ namespace Sinlist.Api.Services.Lists
             return _mapper.Map<ListItemDto>(map);
         }
 
-        public async Task DeleteListItem(int ItemId)
+        public async Task<bool> DeleteListItem(int ItemId)
         {
-            var listItem = await _context.ListItems.FirstOrDefaultAsync(x => x.Id == ItemId);
-            _context.ListItems.Remove(listItem);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var listItem = await _context.ListItems.FirstOrDefaultAsync(x => x.Id == ItemId);
+                _context.ListItems.Remove(listItem);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task DeleteListWithItem(int listId)
+        public async Task<bool> DeleteListWithItem(int listId)
         {
             //var list = await _context.Lists.FirstOrDefaultAsync(x => x.Id == listId);
             //_context.Lists.Remove(list);
             //var lisItems = await _context.ListItems.AllAsync(x => x.ListId == listId);
-            var list = await _context.Lists.FindAsync(listId);
-            if(list != null)
+            try
             {
-                var listItems = await _context.ListItems.Where(x => x.ListId == listId).ToListAsync();
+                var list = await _context.Lists.FindAsync(listId);
+                if (list != null)
+                {
+                    var listItems = await _context.ListItems.Where(x => x.ListId == listId).ToListAsync();
 
-                _context.ListItems.RemoveRange(listItems);
-                _context.Lists.Remove(list);
-                await _context.SaveChangesAsync();
+                    _context.ListItems.RemoveRange(listItems);
+                    _context.Lists.Remove(list);
+                    await _context.SaveChangesAsync();
+                }
+                return true;
             }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public async Task<IList<ListItemDto>> GetListWithItemsAsync(int listId)

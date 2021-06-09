@@ -37,15 +37,17 @@ namespace Sinlist.Api.Controllers
         }
 
         [HttpPost("delete_list_item")]
-        public async Task DeleteListItem([FromBody] int ItemId)
+        public async Task<bool> DeleteListItem([FromBody] int ItemId)
         {
-            await _serviceList.DeleteListItem(ItemId);
+            var result = await _serviceList.DeleteListItem(ItemId);
+            return result;
         }
 
         [HttpPost("delete_list_with_item")]
-        public async Task DeleteListWithItem([FromBody]int listId)
+        public async Task<bool> DeleteListWithItem([FromBody]int listId)
         {
-            await _serviceList.DeleteListWithItem(listId);
+            var result = await _serviceList.DeleteListWithItem(listId);
+            return result;
         }
 
         [HttpPost("get_list_with_item")]

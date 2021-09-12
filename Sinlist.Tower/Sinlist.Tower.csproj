@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Sinlist.Shared.Service\Sinlist.Shared.Service.csproj" />
+    <ProjectReference Include="..\Shared\Sinlist.Shared\Sinlist.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
